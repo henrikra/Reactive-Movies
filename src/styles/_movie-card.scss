@@ -1,0 +1,19 @@
+.movie-card {
+	margin-bottom: 25px;
+
+	&--cover {
+		height: 300px;
+		background-size: cover;
+		background-position: bottom;
+	}
+
+	&--title {
+		margin: 5px 0 0;
+		font-weight: 400;
+	}
+
+	&--year {
+		color: #A7B5C2;
+		margin: 0;
+	}
+}

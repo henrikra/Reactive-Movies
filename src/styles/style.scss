@@ -1,0 +1,29 @@
+@import 'toast-grid';
+@import 'movie-card';
+@import 'navbar';
+@import 'buttons';
+
+@import url("https://fonts.googleapis.com/css?family=Roboto|Montserrat|Source+Sans+Pro");
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #6C728A;
+	margin: 0;
+}
+
+.container {
+	max-width: 1170px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.search-box {
+	background: #ECF1F5;
+	border: 2px solid #C1D1DE;
+	padding: 5px 15px;
+	border-radius: 20px;
+}

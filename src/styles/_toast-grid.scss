@@ -177,10 +177,13 @@ $toast-pulls: true !default;
   vertical-align: top;
 
   @media (max-width: $toast-breakpoint-medium) {
-    display: block;
     margin-left: 0;
     margin-right: 0;
     width: auto;
+  }
+
+  @media (max-width: $toast-breakpoint-small - 1) {
+    display: block;
   }
 
   @media (max-width: $toast-breakpoint-medium) and (min-width: $toast-breakpoint-small) {

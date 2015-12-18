@@ -1,4 +1,5 @@
 .movie-card {
+	@extend .col, .col--1-of-5, .col--m-1-of-2;
 	margin-bottom: 25px;
 
 	&--cover {
@@ -15,5 +16,14 @@
 	&--year {
 		color: #A7B5C2;
 		margin: 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.movie-card {
+		&--cover {
+			background-position: center;
+			height: 250px;
+		}
 	}
 }

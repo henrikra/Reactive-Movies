@@ -5,6 +5,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Roboto|Montserrat|Source+Sans+Pro");
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 	color: #6C728A;

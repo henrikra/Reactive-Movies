@@ -1,6 +1,9 @@
 .movie-card {
-	@extend .col, .col--1-of-5, .col--m-1-of-2;
 	margin-bottom: 25px;
+	display: block;
+	text-decoration: none;
+	background: #fff;
+	box-shadow: 0px 0px 5px #ccc;
 
 	&--cover {
 		height: 300px;
@@ -9,13 +12,28 @@
 	}
 
 	&--title {
-		margin: 5px 0 0;
+		margin: 0;
 		font-weight: 400;
+		color: #353D52;
+		white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  font-size: 14px;
 	}
 
 	&--year {
-		color: #A7B5C2;
+		color: $grey-text;
 		margin: 0;
+		font-size: 13px;
+	}
+
+	&--content {
+		padding: 10px 15px;
+	}
+
+	&:hover {
+		transform: scale(1.05);
+		box-shadow: 0px 0px 5px #666;
 	}
 }
 

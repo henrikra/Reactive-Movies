@@ -9,15 +9,20 @@ export default class App extends Component {
 		searchURL: '',
 		searchResults: [],
 		page: 1,
-		query: ''
+		query: '',
+		loading: false
 	};
 
 	search = event => {
 		if (event.keyCode == 13) {
+			this.setState({
+				loading: true
+			});
 			$.get(this.state.searchURL, function(result) {
 				this.setState({
 					searchResults: result.Search,
-					page: 1
+					page: 1,
+					loading: false
 				});
 			}.bind(this));
 		}
@@ -33,7 +38,8 @@ export default class App extends Component {
 	loadMoreResults = event => {
 		var newPage = this.state.page + 1;
 		this.setState({
-			page: newPage
+			page: newPage,
+			loading: true
 		});
 		var searchURLBase = 'http://www.omdbapi.com/?page=' + newPage + '&s=' + this.state.query;
 		var currentSearchResults = this.state.searchResults;
@@ -42,11 +48,18 @@ export default class App extends Component {
 				currentSearchResults.push(movie);
 			});
 			this.setState({
-				searchResults: currentSearchResults
+				searchResults: currentSearchResults,
+				loading: false
 			});
 		}.bind(this));
 	}
   render() {
+  	var showMoreContent;
+  	if (this.state.loading) {
+  		showMoreContent = <img className="ajax-loader" src='http://static.hypable.com/wp-content/themes/hypable/images/ajax_loader_gray.gif' />
+  	} else {
+  		showMoreContent = <button className="show-more-btn" type="button" onClick={this.loadMoreResults} >Show more</button>;
+  	}
     return (
     	<div className="wrap">
 	    	<nav>
@@ -55,12 +68,13 @@ export default class App extends Component {
 	    		</div>
 	    	</nav>
 	    	<div className="container">
-	      	<p>{this.state.searchURL} -- {this.state.page}</p>
 	      	<h2>Search results for: {this.state.query}</h2>
 	      	<SearchResults movies={this.state.searchResults} />
-	      	<button type="button" onClick={this.loadMoreResults} >Show more</button>
-	      	<p>{this.state.searchURL} -- {this.state.page}</p>
+	      	<div className="show-more-container">
+	      		{showMoreContent}
+	      	</div>
 	      </div>
+	      <footer>&copy; {new Date().getFullYear()} Henrik Raitasola</footer>
       </div>
     );
   }

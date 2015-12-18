@@ -1,9 +1,11 @@
 @import 'toast-grid';
+@import 'vars';
 @import 'movie-card';
 @import 'navbar';
 @import 'buttons';
+@import 'footer';
 
-@import url("https://fonts.googleapis.com/css?family=Roboto|Montserrat|Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 * {
 	box-sizing: border-box;
@@ -13,6 +15,7 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	color: #353D52;
 	margin: 0;
+	background: #F2F2F2;
 }
 
 .container {
@@ -36,6 +39,20 @@ img {
 	font-family: "Montserrat",sans-serif;
 
 	&:focus {
-		border-color: #00B7FF;
+		border-color: $main-color;
 	}
+}
+
+.show-more-container {
+	text-align: center;
+	padding: 40px 0;
+}
+
+.show-more-btn {
+	padding: 10px 20px;
+}
+
+.ajax-loader {
+	width: 44px;
+	height: 44px;
 }

@@ -8,7 +8,7 @@ button {
 	transition: all 0.3s ease-in-out;
 
 	&:hover {
-		border-color: #00B7FF;
+		border-color: $main-color;
 		cursor: pointer;
 	}
 }

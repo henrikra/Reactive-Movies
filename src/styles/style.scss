@@ -10,8 +10,8 @@
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
-	color: #6C728A;
+	font-family: 'Montserrat', sans-serif;
+	color: #353D52;
 	margin: 0;
 }
 
@@ -26,8 +26,16 @@ img {
 }
 
 .search-box {
-	background: #ECF1F5;
-	border: 2px solid #C1D1DE;
+	color: #fff;
+	background: #353D52;
+	border: 2px solid #AFB6C6;
 	padding: 5px 15px;
 	border-radius: 20px;
+	transition: all 0.3s ease-in-out;
+	font-size: 14px;
+	font-family: "Montserrat",sans-serif;
+
+	&:focus {
+		border-color: #00B7FF;
+	}
 }

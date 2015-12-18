@@ -15,7 +15,6 @@ export default class App extends Component {
 	search = event => {
 		if (event.keyCode == 13) {
 			$.get(this.state.searchURL, function(result) {
-				console.log(result.Search);
 				this.setState({
 					searchResults: result.Search,
 					page: 1
@@ -27,26 +26,20 @@ export default class App extends Component {
 		var searchURLBase = 'http://www.omdbapi.com/?page=' + this.state.page + '&s=';
 		this.state.query = event.target.value;
 		this.setState({
-			searchURL: searchURLBase + encodeURIComponent(this.state.query)
+			searchURL: searchURLBase + encodeURIComponent(this.state.query),
+			page: 1
 		});
 	}
 	loadMoreResults = event => {
-		console.log("ennen " + this.state.page);
 		var newPage = this.state.page + 1;
 		this.setState({
 			page: newPage
 		});
-		console.log("jälkeen " + this.state.page);
-		var searchURLBase = 'http://www.omdbapi.com/?page=' + this.state.page + '&s=';
-		this.setState({
-			searchURL: searchURLBase + encodeURIComponent(this.state.query)
-		});
+		var searchURLBase = 'http://www.omdbapi.com/?page=' + newPage + '&s=' + this.state.query;
 		var currentSearchResults = this.state.searchResults;
-
-
-		$.get(this.state.searchURL, function(result) {
+		$.get(searchURLBase, function(result) {
 			result.Search.forEach(function(movie) {
-				currentSearchResults.push(movie); // gfzizz
+				currentSearchResults.push(movie);
 			});
 			this.setState({
 				searchResults: currentSearchResults
@@ -58,13 +51,15 @@ export default class App extends Component {
     	<div className="wrap">
 	    	<nav>
 	    		<div className="container">
-	    			<input className="search-box" type="search" onKeyUp={this.search} onChange={this.updateSearchURL} />
+	    			<input className="search-box" type="search" size="25" onKeyUp={this.search} onChange={this.updateSearchURL} />
 	    		</div>
 	    	</nav>
 	    	<div className="container">
-	      	<p>{this.state.searchURL}</p>
+	      	<p>{this.state.searchURL} -- {this.state.page}</p>
+	      	<h2>Search results for: {this.state.query}</h2>
 	      	<SearchResults movies={this.state.searchResults} />
 	      	<button type="button" onClick={this.loadMoreResults} >Show more</button>
+	      	<p>{this.state.searchURL} -- {this.state.page}</p>
 	      </div>
       </div>
     );

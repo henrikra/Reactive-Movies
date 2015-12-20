@@ -1,9 +1,11 @@
 @import 'toast-grid';
 @import 'vars';
+@import 'layout';
 @import 'movie-card';
 @import 'navbar';
 @import 'buttons';
 @import 'footer';
+@import 'movie-modal';
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
@@ -55,4 +57,8 @@ img {
 .ajax-loader {
 	width: 44px;
 	height: 44px;
+}
+
+.search-results {
+	padding-top: 15px;
 }

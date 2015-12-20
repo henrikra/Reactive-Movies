@@ -68,7 +68,6 @@ export default class App extends Component {
 	    		</div>
 	    	</nav>
 	    	<div className="container">
-	      	<h2>Search results for: {this.state.query}</h2>
 	      	<SearchResults movies={this.state.searchResults} />
 	      	<div className="show-more-container">
 	      		{showMoreContent}

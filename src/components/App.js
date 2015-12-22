@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 var $ = require('jquery');
 import SearchResults from './SearchResults';
 
-require('./styles/style.scss')
+require('../styles/style.scss');
 
 export default class App extends Component {
 	state = {

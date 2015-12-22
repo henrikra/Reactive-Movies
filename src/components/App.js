@@ -1,57 +1,47 @@
 import React, { Component } from 'react';
-var $ = require('jquery');
+import $ from 'jquery';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
+import InfiniteScroll from './InfiniteScroll';
 
 require('../styles/style.scss');
 
 export default class App extends Component {
 	state = {
 		searchResults: [],
-		page: 1,
-		query: '',
-		loading: false
+		loading: false,
+		page: 1
 	}
-
-	loadMoreResults = event => {
-		var newPage = this.state.page + 1;
-		this.setState({
-			page: newPage,
-			loading: true
-		});
-		var searchURLBase = 'http://www.omdbapi.com/?page=' + newPage + '&s=' + this.state.query;
-		var currentSearchResults = this.state.searchResults;
-		$.get(searchURLBase, function(result) {
-			result.Search.forEach(function(movie) {
-				currentSearchResults.push(movie);
-			});
+	getMovies = (query, page, currentSearchResults = []) => {
+		this.setState({loading: true});
+		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query, function(result) {
 			this.setState({
-				searchResults: currentSearchResults,
-				loading: false
+				searchResults: currentSearchResults.concat(result.Search),
+				loading: false,
+				query: query,
+				page: page
 			});
 		}.bind(this));
 	}
 	handleQuerySubmit = query => {
-		$.get('http://www.omdbapi.com/?page=1&s=' + query, function(result) {
-			this.setState({
-				searchResults: result.Search
-			});
-		}.bind(this));
+		this.getMovies(query, 1);
+	}
+	handleShowMoreClick = page => {
+		this.getMovies(this.state.query, page, this.state.searchResults);
 	}
   render() {
-  	var showMoreContent;
-  	if (this.state.loading) {
-  		showMoreContent = <img className="ajax-loader" src='http://static.hypable.com/wp-content/themes/hypable/images/ajax_loader_gray.gif' />
-  	} else {
-  		showMoreContent = <button className="show-more-btn" type="button" onClick={this.loadMoreResults} >Show more</button>;
-  	}
     return (
     	<div className="app">
 	    	<SearchBar onQuerySubmit={this.handleQuerySubmit} />
 	    	<div className="container">
 	      	<SearchResults movies={this.state.searchResults} />
 	      	<div className="show-more-container">
-	      		{showMoreContent}
+	      		<InfiniteScroll
+	      			loading={this.state.loading}
+	      			hasMovies={this.state.searchResults.length}
+	      			onShowMoreClick={this.handleShowMoreClick}
+	      			page={this.state.page}
+	      		/>
 	      	</div>
 	      </div>
 	      <footer>&copy; {new Date().getFullYear()} Henrik Raitasola</footer>

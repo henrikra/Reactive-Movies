@@ -26,7 +26,8 @@ export default class SearchBar extends Component {
 		  				type="search"
 		  				placeholder="Search movies..."
 		  				value={this.state.query}
-		  				onChange={this.handleQueryChange} />
+		  				onChange={this.handleQueryChange}
+		  			/>
 		  		</div>
 	  		</form>
 	  	</nav>

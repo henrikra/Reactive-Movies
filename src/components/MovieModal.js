@@ -6,7 +6,7 @@ export default class MovieModal extends Component {
 		movie: {}
 	}
 	componentDidMount() {
-		$.get('http://www.omdbapi.com/?i=' + this.props.movieId, function(result) {
+		$.get('http://www.omdbapi.com/?i=' + this.props.movieId, (result) => {
 			var movieCover;
 			if (result.Poster == 'N/A') {
 				movieCover = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=200%C3%97300&w=200&h=300';
@@ -20,7 +20,7 @@ export default class MovieModal extends Component {
 				movie: result,
 				moviePoster: coverStyle
 			});
-		}.bind(this));
+		});
 	}
 	getModalState() {
 		if (this.props.modalOpen) {

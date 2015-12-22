@@ -17,14 +17,14 @@ export default class App extends Component {
 			loading: true,
 			searchResults: currentSearchResults
 		});
-		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query, function(result) {
+		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query, (result) => {
 			this.setState({
 				searchResults: currentSearchResults.concat(result.Search),
 				loading: false,
 				query: query,
 				page: page
 			});
-		}.bind(this));
+		});
 	}
 	handleQuerySubmit = query => {
 		this.getMovies(query, 1);

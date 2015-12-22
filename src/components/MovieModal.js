@@ -23,11 +23,11 @@ export default class MovieModal extends Component {
 		}.bind(this));
 	}
 	getModalState() {
-		var modalState = '';
 		if (this.props.modalOpen) {
-			modalState = ' open';
+			return 'movie-modal open';
+		} else {
+			return 'movie-modal';
 		}
-		return 'movie-modal' + modalState;
 	}
 	closeModal = () => {
 		this.props.onModalClose();
@@ -53,7 +53,6 @@ export default class MovieModal extends Component {
 									<span className="movie-modal--rated">{this.state.movie.Rated}</span>
 									<span className="movie-modal--runtime">{this.state.movie.Runtime}</span>
 								</p>
-								
 								<hr className="movie-modal--hr" />
 								<p className="movie-modal--plot">{this.state.movie.Plot}</p>
 								<p className="movie-modal--crew"><span className="movie-modal--crew-label">Director:</span> {this.state.movie.Director}</p>

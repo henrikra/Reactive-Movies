@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
+import MovieList from './MovieList';
 import InfiniteScroll from './InfiniteScroll';
 
 require('../styles/style.scss');
@@ -34,7 +34,7 @@ export default class App extends Component {
     	<div className="app">
 	    	<SearchBar onQuerySubmit={this.handleQuerySubmit} />
 	    	<div className="container">
-	      	<SearchResults movies={this.state.searchResults} />
+	      	<MovieList movies={this.state.searchResults} />
 	      	<div className="show-more-container">
 	      		<InfiniteScroll
 	      			loading={this.state.loading}

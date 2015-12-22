@@ -1,40 +1,18 @@
 import React, { Component } from 'react';
 var $ = require('jquery');
+import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
 require('../styles/style.scss');
 
 export default class App extends Component {
 	state = {
-		searchURL: '',
 		searchResults: [],
 		page: 1,
 		query: '',
 		loading: false
-	};
+	}
 
-	search = event => {
-		if (event.keyCode == 13) {
-			this.setState({
-				loading: true
-			});
-			$.get(this.state.searchURL, function(result) {
-				this.setState({
-					searchResults: result.Search,
-					page: 1,
-					loading: false
-				});
-			}.bind(this));
-		}
-	}
-	updateSearchURL = event => {
-		var searchURLBase = 'http://www.omdbapi.com/?page=' + this.state.page + '&s=';
-		this.state.query = event.target.value;
-		this.setState({
-			searchURL: searchURLBase + encodeURIComponent(this.state.query),
-			page: 1
-		});
-	}
 	loadMoreResults = event => {
 		var newPage = this.state.page + 1;
 		this.setState({
@@ -53,6 +31,13 @@ export default class App extends Component {
 			});
 		}.bind(this));
 	}
+	handleQuerySubmit = query => {
+		$.get('http://www.omdbapi.com/?page=1&s=' + query, function(result) {
+			this.setState({
+				searchResults: result.Search
+			});
+		}.bind(this));
+	}
   render() {
   	var showMoreContent;
   	if (this.state.loading) {
@@ -62,11 +47,7 @@ export default class App extends Component {
   	}
     return (
     	<div className="app">
-	    	<nav>
-	    		<div className="container">
-	    			<input className="search-box" type="search" size="25" onKeyUp={this.search} onChange={this.updateSearchURL} />
-	    		</div>
-	    	</nav>
+	    	<SearchBar onQuerySubmit={this.handleQuerySubmit} />
 	    	<div className="container">
 	      	<SearchResults movies={this.state.searchResults} />
 	      	<div className="show-more-container">

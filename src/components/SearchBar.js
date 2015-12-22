@@ -19,15 +19,20 @@ export default class SearchBar extends Component {
 	render() {
 		return (
 			<nav>
-				<form onSubmit={this.handleSubmit} >
+				<form className="search-form" onSubmit={this.handleSubmit} >
 		  		<div className="container">
 		  			<input
-		  				className="search-box"
+		  				className="search-form--box"
 		  				type="search"
-		  				placeholder="Search movies..."
+		  				placeholder="Search..."
 		  				value={this.state.query}
 		  				onChange={this.handleQueryChange}
 		  			/>
+		  			<select className="search-form--category">
+		  				<option>Movies</option>
+		  				<option>Series</option>
+		  				<option>Episodes</option>
+		  			</select>
 		  		</div>
 	  		</form>
 	  	</nav>

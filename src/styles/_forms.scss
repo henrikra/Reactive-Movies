@@ -1,0 +1,29 @@
+.search-form {
+	margin: 0;
+
+	&--box {
+		border-radius: 20px 0 0 20px;
+		transition: all 0.3s ease-in-out;
+		width: 250px;
+
+		&:focus {
+			border-color: $main-color;
+		}
+	}
+
+	&--category {
+		margin-left: -2px;
+		padding: 5px 10px;
+	}
+}
+
+input[type="search"], select {
+	color: #fff;
+	background: #353D52;
+	border: 2px solid #AFB6C6;
+	padding: 5px 15px;
+	font-size: 14px;
+	font-family: "Montserrat",sans-serif;
+	height: 34px;
+}
+

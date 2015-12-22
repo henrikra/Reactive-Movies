@@ -5,11 +5,12 @@ export default class MovieCard extends Component {
 	state = {
 		modalOpen: false
 	}
-	showDetails = (e) => {
-		e.preventDefault();
-		this.setState({
-			modalOpen: true
-		});
+	showDetails = (event) => {
+		event.preventDefault();
+		this.setState({modalOpen: true});
+	}
+	handleModalClose = () => {
+		this.setState({modalOpen: false});
 	}
 	render() {
 		var movieCover;
@@ -30,7 +31,11 @@ export default class MovieCard extends Component {
 						<p className="movie-card--year">{this.props.movie.Year}</p>
 					</div>
 				</a>
-				<MovieModal movieId={this.props.movie.imdbID} modalOpen={this.state.modalOpen} />
+				<MovieModal
+					movieId={this.props.movie.imdbID}
+					modalOpen={this.state.modalOpen}
+					onModalClose={this.handleModalClose}
+				/>
 			</div>
 		);
 	}

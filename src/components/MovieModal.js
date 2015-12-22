@@ -3,8 +3,7 @@ var $ = require('jquery');
 
 export default class MovieModal extends Component {
 	state = {
-		movie: {},
-		modalOpen: this.props.modalOpen
+		movie: {}
 	}
 	componentDidMount() {
 		$.get('http://www.omdbapi.com/?i=' + this.props.movieId, function(result) {
@@ -24,24 +23,14 @@ export default class MovieModal extends Component {
 		}.bind(this));
 	}
 	getModalState() {
-		console.log("modaalin tila " + this.state.modalOpen);
 		var modalState = '';
-		if (this.state.modalOpen) {
+		if (this.props.modalOpen) {
 			modalState = ' open';
 		}
 		return 'movie-modal' + modalState;
 	}
-	closeModal = event => {
-		console.log("suljetaan modaali");
-		this.setState({
-			modalOpen: false
-		});
-	}
-	componentWillReceiveProps = (nextProps) => {
-		this.setState({
-			modalOpen: nextProps.modalOpen
-		});
-		console.log(nextProps);
+	closeModal = () => {
+		this.props.onModalClose();
 	}
 	render() {
 		return (

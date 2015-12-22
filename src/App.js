@@ -61,7 +61,7 @@ export default class App extends Component {
   		showMoreContent = <button className="show-more-btn" type="button" onClick={this.loadMoreResults} >Show more</button>;
   	}
     return (
-    	<div className="wrap">
+    	<div className="app">
 	    	<nav>
 	    		<div className="container">
 	    			<input className="search-box" type="search" size="25" onKeyUp={this.search} onChange={this.updateSearchURL} />

@@ -47,7 +47,7 @@ export default class MovieModal extends Component {
 		return (
 			<div className={this.getModalState()}>
 				<div className="movie-modal--box">
-					<div className="row">
+					<div className="row row--no-gutter">
 						<div className="col col--4-of-12">
 							<div className="movie-modal--poster-container">
 								<div className="movie-modal--poster" style={this.state.moviePoster} />

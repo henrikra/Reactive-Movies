@@ -7,6 +7,8 @@
 	opacity: 0;
 	transition: all 0.2s ease-in-out;
 	visibility: hidden;
+	padding: 15px;
+	overflow-y: auto;
 
 	&--box {
 		max-width: 900px;
@@ -71,6 +73,7 @@
 		font-size: 35px;
 		display: block;
 		color: $main-color;
+		text-align: right;
 	}
 
 	&--imdb-votes {
@@ -90,7 +93,7 @@
 	}
 
 	&--crew {
-		margin: 0 0 10px;
+		margin: 0 0 15px;
 	}
 
 	&--crew-label {
@@ -110,5 +113,51 @@
 		.movie-modal--box {
 			transform: translateY(-50%);
 		}
+	}
+}
+
+body.modal-open {
+	overflow: hidden;
+}
+
+@media (max-width: 768px) {
+	.movie-modal {
+		&--box {
+			height: auto;
+			position: static;
+		  top: 0;
+		  margin-bottom: 15px;
+		}
+
+		&--poster-container {
+			display: none;
+		}
+
+		&--decription-container {
+			padding: 15px;
+		}
+
+		&--imdb-review {
+			top: 15px;
+			right: 15px;
+		}
+
+		&--close-btn {
+			margin-top: 5px;
+		}
+
+		&--meta {
+			margin-bottom: 15px;
+		}
+
+		&--plot {
+			margin: 15px 0;
+		}
+
+		&.open {
+			.movie-modal--box {
+		  	transform: translateY(0);
+		  }
+	  }
 	}
 }

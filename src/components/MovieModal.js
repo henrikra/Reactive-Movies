@@ -31,6 +31,7 @@ export default class MovieModal extends Component {
 	}
 	closeModal = () => {
 		this.props.onModalClose();
+		document.body.classList.remove('modal-open');
 	}
 	render() {
 		return (

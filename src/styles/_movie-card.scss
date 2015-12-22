@@ -41,7 +41,13 @@
 	.movie-card {
 		&--cover {
 			background-position: center;
-			height: 250px;
+			height: 200px;
+		}
+
+		&:hover {
+			transform: none;
 		}
 	}
+
+
 }

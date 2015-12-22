@@ -7,6 +7,7 @@ export default class MovieCard extends Component {
 	}
 	showDetails = (event) => {
 		event.preventDefault();
+		document.body.classList.add('modal-open');
 		this.setState({modalOpen: true});
 	}
 	handleModalClose = () => {

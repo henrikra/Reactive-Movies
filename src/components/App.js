@@ -13,7 +13,10 @@ export default class App extends Component {
 		page: 1
 	}
 	getMovies = (query, page, currentSearchResults = []) => {
-		this.setState({loading: true});
+		this.setState({
+			loading: true,
+			searchResults: currentSearchResults
+		});
 		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query, function(result) {
 			this.setState({
 				searchResults: currentSearchResults.concat(result.Search),

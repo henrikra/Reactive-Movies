@@ -71,13 +71,15 @@
 
 	&--imdb-rating {
 		font-size: 35px;
+		line-height: 35px;
 		display: block;
 		color: $main-color;
 		text-align: right;
+		margin-bottom: 5px;
 	}
 
 	&--imdb-votes {
-		font-size: 14px;
+		font-size: 13px;
 		color: $grey-text;
 		display: block;
 		text-align: right;
@@ -140,6 +142,11 @@ body.modal-open {
 		&--imdb-review {
 			top: 15px;
 			right: 15px;
+		}
+
+		&--imdb-rating {
+			font-size: 30px;
+			line-height: 30px;
 		}
 
 		&--close-btn {

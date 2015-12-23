@@ -44,7 +44,7 @@ export default class SearchBar extends Component {
 		  				className="search-form--type"
 		  				onChange={this.handleTypeChange}
 		  			>
-		  				<option></option>
+		  				<option value="">All</option>
 		  				<option value="movie">Movies</option>
 		  				<option>Series</option>
 		  			</select>

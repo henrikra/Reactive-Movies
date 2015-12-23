@@ -3,6 +3,7 @@ import $ from 'jquery';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import InfiniteScroll from './InfiniteScroll';
+import ResultsHeader from './ResultsHeader';
 
 require('../styles/style.scss');
 
@@ -11,7 +12,8 @@ export default class App extends Component {
 		movies: [],
 		loading: false,
 		page: 1,
-		type: ''
+		type: '',
+		error: ''
 	}
 	getMovies = (query, page, type, currentMovies = []) => {
 		this.setState({
@@ -19,13 +21,21 @@ export default class App extends Component {
 			movies: currentMovies
 		});
 		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query + '&type=' + type, (result) => {
-			this.setState({
-				movies: currentMovies.concat(result.Search),
-				loading: false,
-				query: query,
-				page: page,
-				type: type
-			});
+			if (result.Search) {
+				this.setState({
+					movies: currentMovies.concat(result.Search),
+					loading: false,
+					query: query,
+					page: page,
+					type: type,
+					error: ''
+				});
+			} else {
+				this.setState({
+					error: result.Error,
+					query: query
+				});
+			}
 		});
 	}
 	handleQuerySubmit = (query, type) => {
@@ -39,6 +49,11 @@ export default class App extends Component {
     	<div className="app">
 	    	<SearchBar onQuerySubmit={this.handleQuerySubmit} />
 	    	<div className="container">
+	    		<ResultsHeader
+	    			error={this.state.error}
+	    			query={this.state.query}
+	    			hasMovies={this.state.movies.length}
+	    		/>
 	      	<MovieList movies={this.state.movies} />
 	      	<div className="show-more-container">
 	      		<InfiniteScroll

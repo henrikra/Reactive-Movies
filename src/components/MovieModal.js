@@ -11,7 +11,7 @@ export default class MovieModal extends Component {
 			if (result.Poster == 'N/A') {
 				movieCover = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=200%C3%97300&w=200&h=300';
 			} else {
-				movieCover = result.Poster;
+				movieCover = 'http://img.omdbapi.com/?i=' + this.props.movieId + '&apikey=aa6fb7aa&h=300';
 			}
 			var coverStyle = {
 				backgroundImage: 'url(' + movieCover + ')'

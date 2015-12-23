@@ -18,7 +18,7 @@ export default class MovieCard extends Component {
 		if (this.props.movie.Poster == 'N/A') {
 			movieCover = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=200%C3%97300&w=200&h=300';
 		} else {
-			movieCover = this.props.movie.Poster;
+			movieCover = 'http://img.omdbapi.com/?i=' + this.props.movie.imdbID + '&apikey=aa6fb7aa&h=300';
 		}
 		var coverStyle = {
 			backgroundImage: 'url(' + movieCover + ')'

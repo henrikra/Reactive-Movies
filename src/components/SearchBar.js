@@ -29,7 +29,7 @@ export default class SearchBar extends Component {
 		  			<input
 		  				className="search-form--box"
 		  				type="search"
-		  				placeholder="Search..."
+		  				placeholder="Search movies or series..."
 		  				value={this.state.query}
 		  				onChange={this.handleQueryChange}
 		  			/>

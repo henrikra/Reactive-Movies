@@ -4,14 +4,14 @@
 	&--box {
 		border-radius: 20px 0 0 20px;
 		transition: all 0.3s ease-in-out;
-		width: 250px;
+		width: 230px;
 
 		&:focus {
 			border-color: $main-color;
 		}
 	}
 
-	&--category {
+	&--type {
 		margin-left: -2px;
 		padding: 5px 10px;
 	}
@@ -34,5 +34,24 @@ input[type="search"], select {
 	font-size: 14px;
 	font-family: "Montserrat",sans-serif;
 	height: 34px;
+}
+
+@media (max-width: 480px) {
+	input[type="search"], select, input[type="submit"] {
+		display: block;
+		width: 100%;
+		border-radius: 0;
+		margin-bottom: 5px;
+	}
+
+	.search-form {
+		&--type {
+			margin-left: 0;
+		}
+
+		&--submit-btn {
+			margin-left: 0;
+		}
+	}
 }
 

@@ -15,6 +15,15 @@
 		margin-left: -2px;
 		padding: 5px 10px;
 	}
+
+	&--submit-btn {
+		@extend .button;
+		background: #353D52;
+		color: #fff;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		margin-left: -2px;
+	}
 }
 
 input[type="search"], select {

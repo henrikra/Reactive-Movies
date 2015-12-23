@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
 	state = {
-		query: ''
+		query: '',
+		type: ''
 	}
 	handleQueryChange = event => {
 		this.setState({query: event.target.value});
@@ -10,11 +11,15 @@ export default class SearchBar extends Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		var query = this.state.query.trim();
+		var type = this.state.type.trim();
 		if (!query) {
 			return;
 		}
-		this.props.onQuerySubmit(query);
+		this.props.onQuerySubmit(query, type);
 		this.setState({query: ''});
+	}
+	handleTypeChange = (event) => {
+		this.setState({type: event.target.options[event.target.selectedIndex].value});
 	}
 	render() {
 		return (
@@ -28,11 +33,19 @@ export default class SearchBar extends Component {
 		  				value={this.state.query}
 		  				onChange={this.handleQueryChange}
 		  			/>
-		  			<select className="search-form--category">
-		  				<option>Movies</option>
+		  			<select value={this.state.type}
+		  				className="search-form--type"
+		  				onChange={this.handleTypeChange}
+		  			>
+		  				<option></option>
+		  				<option value="movie">Movies</option>
 		  				<option>Series</option>
-		  				<option>Episodes</option>
 		  			</select>
+		  			<input
+		  				className="search-form--submit-btn"
+		  				type="submit"
+		  				value="Search"
+		  			/>
 		  		</div>
 	  		</form>
 	  	</nav>

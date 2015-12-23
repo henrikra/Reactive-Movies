@@ -8,40 +8,42 @@ require('../styles/style.scss');
 
 export default class App extends Component {
 	state = {
-		searchResults: [],
+		movies: [],
 		loading: false,
-		page: 1
+		page: 1,
+		type: ''
 	}
-	getMovies = (query, page, currentSearchResults = []) => {
+	getMovies = (query, page, type, currentMovies = []) => {
 		this.setState({
 			loading: true,
-			searchResults: currentSearchResults
+			movies: currentMovies
 		});
-		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query, (result) => {
+		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query + '&type=' + type, (result) => {
 			this.setState({
-				searchResults: currentSearchResults.concat(result.Search),
+				movies: currentMovies.concat(result.Search),
 				loading: false,
 				query: query,
-				page: page
+				page: page,
+				type: type
 			});
 		});
 	}
-	handleQuerySubmit = query => {
-		this.getMovies(query, 1);
+	handleQuerySubmit = (query, type) => {
+		this.getMovies(query, 1, type);
 	}
 	handleShowMoreClick = page => {
-		this.getMovies(this.state.query, page, this.state.searchResults);
+		this.getMovies(this.state.query, page, this.state.type, this.state.movies);
 	}
   render() {
     return (
     	<div className="app">
 	    	<SearchBar onQuerySubmit={this.handleQuerySubmit} />
 	    	<div className="container">
-	      	<MovieList movies={this.state.searchResults} />
+	      	<MovieList movies={this.state.movies} />
 	      	<div className="show-more-container">
 	      		<InfiniteScroll
 	      			loading={this.state.loading}
-	      			hasMovies={this.state.searchResults.length}
+	      			hasMovies={this.state.movies.length}
 	      			onShowMoreClick={this.handleShowMoreClick}
 	      			page={this.state.page}
 	      		/>

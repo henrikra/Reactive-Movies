@@ -58,7 +58,7 @@ export default class MovieModal extends Component {
 								<p className="movie-modal--plot">{this.state.movie.Plot}</p>
 								<p className="movie-modal--crew"><span className="movie-modal--crew-label">Director:</span> {this.state.movie.Director}</p>
 								<p className="movie-modal--crew"><span className="movie-modal--crew-label">Actors:</span> {this.state.movie.Actors}</p>
-								<button className="movie-modal--close-btn" type="button" onClick={this.closeModal}>Close</button>
+								<button className="movie-modal--close-btn button" type="button" onClick={this.closeModal}>Close</button>
 							</div>
 						</div>
 					</div>

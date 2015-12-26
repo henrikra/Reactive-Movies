@@ -26,6 +26,12 @@ export default class SearchBar extends Component {
 		$(event.target).select();
 	}
 	render() {
+		var submitBtn;
+		if (this.props.loading) {
+			submitBtn = <input className="search-form--submit-btn" disabled="disabled" type="submit" value="Loading" />
+		} else {
+			submitBtn = <input className="search-form--submit-btn" type="submit" value="Search" />
+		}
 		return (
 			<nav>
 				<form className="search-form" onSubmit={this.handleSubmit} >
@@ -48,11 +54,7 @@ export default class SearchBar extends Component {
 		  				<option value="movie">Movies</option>
 		  				<option>Series</option>
 		  			</select>
-		  			<input
-		  				className="search-form--submit-btn"
-		  				type="submit"
-		  				value="Search"
-		  			/>
+		  			{submitBtn}
 		  		</div>
 	  		</form>
 	  	</nav>

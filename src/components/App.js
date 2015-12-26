@@ -47,7 +47,10 @@ export default class App extends Component {
   render() {
     return (
     	<div className="app">
-	    	<SearchBar onQuerySubmit={this.handleQuerySubmit} />
+	    	<SearchBar
+	    		onQuerySubmit={this.handleQuerySubmit}
+	    		loading={this.state.loading}
+	    	/>
 	    	<div className="container">
 	    		<ResultsHeader
 	    			error={this.state.error}

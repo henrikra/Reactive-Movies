@@ -30,6 +30,14 @@
 		background: #00B0F4;
 		color: #fff;
 		margin-left: 15px;
+
+		&:disabled {
+			background: #C1D1DE;
+
+			&:hover {
+				border-color: #C1D1DE;
+			}
+		}
 	}
 }
 

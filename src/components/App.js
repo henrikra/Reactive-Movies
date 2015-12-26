@@ -33,7 +33,8 @@ export default class App extends Component {
 			} else {
 				this.setState({
 					error: result.Error,
-					query: query
+					query: query,
+					loading: false
 				});
 			}
 		});
@@ -61,7 +62,7 @@ export default class App extends Component {
 	      	<div className="show-more-container">
 	      		<InfiniteScroll
 	      			loading={this.state.loading}
-	      			hasMovies={this.state.movies.length}
+	      			movieCount={this.state.movies.length}
 	      			onShowMoreClick={this.handleShowMoreClick}
 	      			page={this.state.page}
 	      		/>

@@ -1,0 +1,44 @@
+.typeahead {
+	display: inline-block;
+	position: relative;
+}
+
+.typeahead-selector {
+	margin: -2px 0 0;
+	padding: 0;
+	position: absolute;
+	list-style-type: none;
+	background: #353D52;
+	border: 2px solid #AFB6C6;
+	padding: 5px 10px;
+  width: 100%;
+
+  .hover .typeahead-option {
+  	color: $main-color;
+  }
+}
+
+.typeahead-option {
+	font-size: 14px;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	padding: 4px 0;
+
+	&:hover {
+		color: $main-color;
+	}
+}
+
+@media (max-width: 767px) {
+	.typeahead {
+		width: 70%;
+	}
+}
+
+@media (max-width: 480px) {
+	.typeahead {
+		display: block;
+		width: 100%;
+	}
+}

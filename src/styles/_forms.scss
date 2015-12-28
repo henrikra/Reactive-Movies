@@ -27,16 +27,18 @@
 
 	&--submit-btn {
 		@extend .button;
-		background: #00B0F4;
+		background: $main-color;
 		color: #fff;
 		margin-left: 15px;
+		border: 0;
+		padding: 7px 15px;
+
+		&:hover {
+			background: darken($main-color, 5%);
+		}
 
 		&:disabled {
 			background: #C1D1DE;
-
-			&:hover {
-				border-color: #C1D1DE;
-			}
 		}
 	}
 }

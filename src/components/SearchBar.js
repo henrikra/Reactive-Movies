@@ -62,7 +62,7 @@ export default class SearchBar extends Component {
 		  		<div className="container">
 			  		<Typeahead
 					    options={this.state.options}
-					    maxVisible={10}
+					    maxVisible={7}
 					    filterOption="Title"
 					    displayOption={this.displayOptions}
 					    onKeyUp={this.getOptions}

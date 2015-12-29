@@ -16,7 +16,7 @@ export default class InfiniteScroll extends Component {
 	  	}
   	}
 		return (
-			<div>
+			<div className="show-more-container">
 				{showMoreContent}
 			</div>
 		);

@@ -59,14 +59,12 @@ export default class App extends Component {
 	    			hasMovies={this.state.movies.length}
 	    		/>
 	      	<MovieList movies={this.state.movies} />
-	      	<div className="show-more-container">
-	      		<InfiniteScroll
-	      			loading={this.state.loading}
-	      			movieCount={this.state.movies.length}
-	      			onShowMoreClick={this.handleShowMoreClick}
-	      			page={this.state.page}
-	      		/>
-	      	</div>
+      		<InfiniteScroll
+      			loading={this.state.loading}
+      			movieCount={this.state.movies.length}
+      			onShowMoreClick={this.handleShowMoreClick}
+      			page={this.state.page}
+      		/>
 	      </div>
 	      <footer>&copy; {new Date().getFullYear()} Henrik Raitasola</footer>
       </div>

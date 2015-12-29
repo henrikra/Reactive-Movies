@@ -31,21 +31,23 @@ export default class SearchBar extends Component {
 		return option.Title;
 	}
 	getOptions = event => {
-		if (event.target.value.length > 1) {
-			if (event.keyCode == 13) {
-				this.handleSubmit();
-				$(event.target).blur();
-			} else {
-				$('.typeahead-selector').show();
-				this.setState({query: event.target.value});
-				$.get('http://www.omdbapi.com/?s=' + event.target.value, (result) => {
-					if (result.Search) {
-						this.setState({options: result.Search });
-					} else {
-						this.setState({options: [] });
-					}
-				});
-			}
+		if (event.target.value.length < 2) {
+			return;
+		}
+		if (event.keyCode == 13) {
+			this.handleSubmit();
+			$(event.target).blur();
+		} else {
+			$('.typeahead-selector').show();
+			this.setState({query: event.target.value});
+			console.log("haetaan");
+			$.get('http://www.omdbapi.com/?s=' + event.target.value, (result) => {
+				if (result.Search) {
+					this.setState({options: result.Search });
+				} else {
+					this.setState({options: [] });
+				}
+			});
 		}
 	}
 	setSelectedOption = option => {

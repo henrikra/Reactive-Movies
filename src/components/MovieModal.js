@@ -9,12 +9,12 @@ export default class MovieModal extends Component {
 		movie: {}
 	}
 	componentDidMount() {
-		$.get('http://www.omdbapi.com/?apikey=d73910fd&i=' + this.props.movieId, (result) => {
+		$.get('http://www.omdbapi.com/?apikey='+ apiKey + '&i=' + this.props.movieId, (result) => {
 			var movieCover;
 			if (result.Poster == 'N/A') {
 				movieCover = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20poster&w=200&h=300';
 			} else {
-				movieCover = 'http://img.omdbapi.com/?i=' + this.props.movieId + '&apikey=' + apiKey;
+				movieCover = 'http://img.omdbapi.com/?i=' + this.props.movieId + '&apikey=' + apiKey + '&h=300';
 			}
 			var coverStyle = {
 				backgroundImage: 'url(' + movieCover + ')'

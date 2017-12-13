@@ -5,6 +5,8 @@ import MovieList from './MovieList';
 import InfiniteScroll from './InfiniteScroll';
 import ResultsHeader from './ResultsHeader';
 
+import {apiKey} from '../apiKey';
+
 require('../styles/style.scss');
 
 export default class App extends Component {
@@ -20,7 +22,7 @@ export default class App extends Component {
 			loading: true,
 			movies: currentMovies
 		});
-		$.get('http://www.omdbapi.com/?page=' + page + '&s=' + query + '&type=' + type, (result) => {
+		$.get('http://www.omdbapi.com/?apikey=' + apiKey + '&s=' + query + '&type=' + type, (result) => {
 			if (result.Search) {
 				this.setState({
 					movies: currentMovies.concat(result.Search),

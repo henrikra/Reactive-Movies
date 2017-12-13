@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MovieModal from './MovieModal';
 
+import {apiKey} from '../apiKey';
+
 export default class MovieCard extends Component {
 	state = {
 		modalOpen: false
@@ -18,7 +20,7 @@ export default class MovieCard extends Component {
 		if (this.props.movie.Poster == 'N/A') {
 			movieCover = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20poster&w=200&h=300';
 		} else {
-			movieCover = 'http://img.omdbapi.com/?i=' + this.props.movie.imdbID + '&apikey=aa6fb7aa&h=300';
+			movieCover = 'http://img.omdbapi.com/?i=' + this.props.movie.imdbID + '&apikey=' + apiKey;
 		}
 		var coverStyle = {
 			backgroundImage: 'url(' + movieCover + ')'

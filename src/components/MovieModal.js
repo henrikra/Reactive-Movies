@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 var $ = require('jquery');
 
+import {apiKey} from '../apiKey';
+
+
 export default class MovieModal extends Component {
 	state = {
 		movie: {}
 	}
 	componentDidMount() {
-		$.get('http://www.omdbapi.com/?i=' + this.props.movieId, (result) => {
+		$.get('http://www.omdbapi.com/?apikey='+ apiKey + '&i=' + this.props.movieId, (result) => {
 			var movieCover;
 			if (result.Poster == 'N/A') {
 				movieCover = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20poster&w=200&h=300';
 			} else {
-				movieCover = 'http://img.omdbapi.com/?i=' + this.props.movieId + '&apikey=aa6fb7aa&h=300';
+				movieCover = 'http://img.omdbapi.com/?i=' + this.props.movieId + '&apikey=' + apiKey + '&h=300';
 			}
 			var coverStyle = {
 				backgroundImage: 'url(' + movieCover + ')'

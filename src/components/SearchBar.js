@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 var Typeahead = require('react-typeahead').Typeahead;
 
+import {apiKey} from '../apiKey';
+
 export default class SearchBar extends Component {
 	state = {
 		query: '',
@@ -41,7 +43,7 @@ export default class SearchBar extends Component {
 			$('.typeahead-selector').show();
 			this.setState({query: event.target.value});
 			console.log("haetaan");
-			$.get('http://www.omdbapi.com/?s=' + event.target.value, (result) => {
+			$.get('http://www.omdbapi.com/?apikey=' + apiKey + '&s=' + event.target.value, (result) => {
 				if (result.Search) {
 					this.setState({options: result.Search });
 				} else {

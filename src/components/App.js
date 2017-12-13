@@ -22,7 +22,7 @@ export default class App extends Component {
 			loading: true,
 			movies: currentMovies
 		});
-		$.get('http://www.omdbapi.com/?apikey=' + apiKey + '&s=' + query + '&type=' + type, (result) => {
+		$.get('http://www.omdbapi.com/?apikey=' + apiKey + '&s=' + query + '&type=' + type + '&page=' + page, (result) => {
 			if (result.Search) {
 				this.setState({
 					movies: currentMovies.concat(result.Search),
